@@ -2,11 +2,17 @@ import React from 'react';
 import './InputField.css';
 
 const InputField = (props) => {
-    return (<input className="input-field" type="text" placeholder="Search..."/>);
-}
+  let textInput = null;
+  
 
-InputField.propTypes = {
-    onTextChange: React.PropTypes.func.isRequired
-};
+  
+  const handleChange = () => {
+    console.log(textInput);
+  }
+
+  return (
+    <input onChange={handleChange} ref={(input) => { textInput = input; }} className="input-field" type="text" placeholder="Search..."/>
+  );
+}
 
 export default InputField;
