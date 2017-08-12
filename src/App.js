@@ -8,8 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       apiLoaded: false,
-      lat: 31.0461,
-      lng: 34.8516
+      lat: 32.085300,
+      lng: 34.781768
     }
   }
 

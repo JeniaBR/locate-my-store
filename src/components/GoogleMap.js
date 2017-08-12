@@ -14,7 +14,7 @@ class GoogleMap extends React.Component {
   componentDidMount() {
     this.map = new google.maps.Map(this.googleMap, {
       center: {lat: this.props.lat, lng: this.props.lng},
-      zoom: 8
+      zoom: 10
     });
 
     this.dropdown = new google.maps.places.Autocomplete(this.textInput);
