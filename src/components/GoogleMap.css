@@ -5,3 +5,18 @@
   height: 600px;
   background: pink;
 }
+
+.wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-field{
+  font-size: 2em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  width: 80%;
+}

@@ -7,16 +7,28 @@ class GoogleMap extends React.Component {
     return false;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.map.panTo({lat: nextProps.lat, lng: nextProps.lng});
+  }
+
   componentDidMount() {
     this.map = new google.maps.Map(this.googleMap, {
-      center: {lat: -34.397, lng: 150.644},
+      center: {lat: this.props.lat, lng: this.props.lng},
       zoom: 8
+    });
+
+    this.dropdown = new google.maps.places.Autocomplete(this.textInput);
+    this.dropdown.addListener('place_changed', () => {
+      this.props.handleInput(this.dropdown.getPlace());
     });
   }
 
   render() {
     return(
-      <div id="map" ref={(map) => { this.googleMap = map; }}>This is My MAP!</div>
+      <div className="wrapper">
+        <input ref={(input) => { this.textInput = input; }} className="input-field" type="text" placeholder="Search..."/>
+        <div id="map" ref={(map) => { this.googleMap = map; }}/>
+      </div>
     );
   }
 }

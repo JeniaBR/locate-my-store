@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import loadGoogleMapsAPI from 'load-google-maps-api';
-import InputField from './components/InputField';
 import GoogleMap from './components/GoogleMap';
 import './App.css';
 
@@ -8,13 +7,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiLoaded: false
+      apiLoaded: false,
+      lat: 31.0461,
+      lng: 34.8516
     }
   }
 
   componentDidMount(){
     loadGoogleMapsAPI({
-      key: 'AIzaSyANVMIa2kKo4YT82L6sP5NN1MTeYUrGTpc'
+      key: 'AIzaSyANVMIa2kKo4YT82L6sP5NN1MTeYUrGTpc',
+      libraries: ['places']
     })
     .then((googleAPI) => {
       this.googleAPI = googleAPI;
@@ -22,13 +24,26 @@ class App extends Component {
     });
   }
 
+  handleInput = (placeObject) => {
+    const lat = placeObject.geometry.location.lat();
+    const lng = placeObject.geometry.location.lng();
+    this.setState({
+      lat,
+      lng
+    })
+  }
+
+
   render() {
-    return (
-      <div className="App">
-        <InputField />
-        {this.state.apiLoaded ? <GoogleMap/> : <h2>Loading Google Maps API</h2>}
-      </div>
-    );
+    if (this.state.apiLoaded) {
+      return(
+        <div className="App">
+          <GoogleMap handleInput={this.handleInput} lat={this.state.lat} lng={this.state.lng}/>
+        </div>
+      );
+    } else {
+      return (<h2>Loding Google Maps API</h2>);
+    }
   }
 }
 
