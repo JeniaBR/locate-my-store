@@ -8,7 +8,19 @@ class GoogleMap extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.map.panTo({lat: nextProps.lat, lng: nextProps.lng});
+    const map = this.map;
+    map.panTo({lat: nextProps.lat, lng: nextProps.lng});
+
+    const bounds = new google.maps.LatLngBounds();
+    
+    const googleMarkers = nextProps.markers.map(position => {
+      bounds.extend(position);
+      const marker = new google.maps.Marker({map, position});
+      return marker;
+    });
+
+    map.setCenter(bounds.getCenter());
+    map.fitBounds(bounds);
   }
 
   componentDidMount() {

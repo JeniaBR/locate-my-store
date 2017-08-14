@@ -1,0 +1,69 @@
+{
+  "stores":
+    [
+      {
+        "name": "Olive Oil",
+        "location" : {
+          "lat": 43.2557206,
+          "lng": -79.87110239999998
+        }
+      },
+      {
+        "name": "Sour on King",
+        "location" : {
+          "lat": 43.25482439999999,
+          "lng": -79.85870940000001
+        }
+      },
+      {
+        "name": "The French",
+        "location" : {
+          "lat": 43.257414,
+          "lng": -79.8674666
+        }
+      },
+      {
+        "name": "Rust City Brewery",
+        "location" : {
+          "lat": 43.2574964,
+          "lng": -79.8677515
+        }
+      },
+      {
+        "name": "Berkeley North",
+        "location" : {
+          "lat": 43.25747380000001,
+          "lng": -79.86767780000002
+        }
+      },
+      {
+        "name": "Mezcal Tacos & Tequila",
+        "location" : {
+          "lat": 43.2522698,
+          "lng": -79.8712961
+        }
+      },
+      {
+        "name": "Donut Monster",
+        "location" : {
+          "lat": 43.2515332,
+          "lng": -79.84285160000002
+        }
+      },
+      {
+        "name": "The Harbour Diner",
+        "location" : {
+          "lat": 43.2694073,
+          "lng": -79.86328909999997
+        }
+      },
+      {
+        "name": "Charred",
+        "location" : {
+          "lat": 43.2627693,
+          "lng": -79.86624549999999
+        }
+      }
+    
+    ]
+}
