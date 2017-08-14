@@ -16,14 +16,7 @@ class GoogleMap extends React.Component {
     });
     console.log('Not filtered', nextProps.markers);
     console.log('Filtered by radius',filteredByRadius);
-    // const d = haversine({
-    //   lat: 43.2557206,
-    //   lng: -79.87110239999998
-    // },{
-    //   lat: 43.25482439999999,
-    //   lng: -79.85870940000001
-    // },{threshold: 1000, unit: 'meter'});
-    // console.log(d);
+
     const bounds = new google.maps.LatLngBounds();
     
     const googleMarkers = nextProps.markers.map(position => {
