@@ -1,5 +1,6 @@
 import React from 'react';
 import './GoogleMap.css';
+import haversine from 'haversine';
 /*global google*/
 class GoogleMap extends React.Component {
 
@@ -10,7 +11,19 @@ class GoogleMap extends React.Component {
   componentWillReceiveProps(nextProps) {
     const map = this.map;
     map.panTo({lat: nextProps.lat, lng: nextProps.lng});
-
+    const filteredByRadius = nextProps.markers.filter( position => {
+      return haversine({lat: nextProps.lat, lng: nextProps.lng}, position, {threshold: 1100, unit: 'meter'} )
+    });
+    console.log('Not filtered', nextProps.markers);
+    console.log('Filtered by radius',filteredByRadius);
+    // const d = haversine({
+    //   lat: 43.2557206,
+    //   lng: -79.87110239999998
+    // },{
+    //   lat: 43.25482439999999,
+    //   lng: -79.85870940000001
+    // },{threshold: 1000, unit: 'meter'});
+    // console.log(d);
     const bounds = new google.maps.LatLngBounds();
     
     const googleMarkers = nextProps.markers.map(position => {
