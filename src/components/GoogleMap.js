@@ -17,9 +17,18 @@ class GoogleMap extends React.Component {
     console.log('Not filtered', nextProps.markers);
     console.log('Filtered by radius',filteredByRadius);
 
+    const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    const myLocation = new google.maps.Marker({
+      position: {lat: nextProps.lat, lng: nextProps.lng},
+      map: map,
+      icon: image
+    });
+
+    if (!filteredByRadius.length) return;
+
     const bounds = new google.maps.LatLngBounds();
     
-    const googleMarkers = nextProps.markers.map(position => {
+    const googleMarkers = filteredByRadius.map(position => {
       bounds.extend(position);
       const marker = new google.maps.Marker({map, position});
       return marker;
